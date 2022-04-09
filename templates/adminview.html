@@ -1,0 +1,44 @@
+{% extends "home.html" %} {% block content %}
+<style>
+  .main {
+    padding: 70px 25vw 30px 25vw;
+  }
+</style>
+<div class="main">
+  <!--users-->
+  <h4>List of users:</h4>
+  <br />
+  <div class="row">
+    <div class="col-sm-2" style="outline-style: solid">UID</div>
+    <div class="col-sm-3" style="outline-style: solid">username</div>
+    <div class="col-sm-4" style="outline-style: solid">email</div>
+    <div class="col-sm-3" style="outline-style: solid">password</div>
+  </div>
+  {%for users in userlist%}
+  <div class="row">
+    <div class="col-sm-2" style="outline-style: solid">{{ users.UID }}</div>
+    <div class="col-sm-3" style="outline-style: solid">
+      {{ users.username }}
+    </div>
+    <div class="col-sm-4" style="outline-style: solid">{{ users.email }}</div>
+    <div class="col-sm-3" style="outline-style: solid">
+      {{ users.password }}
+    </div>
+  </div>
+  {% endfor %}
+  <br />
+  <h4>User removal:</h4>
+    <form method="POST">
+      <div class="form-group">
+        <label for="userid">Enter user id:</label>
+        <input type="int" id="id" name="id" placeholder="User id" required/>
+      </div>
+      <div class="form-group">
+        <label for="Confirmation">Please enter "Confirm" to confirm deletion:</label>
+        <input type="var" id="confirm" name="confirm" placeholder="Confirm" required/>
+      </div>
+      <div class="form-group">
+          <button type="submit">Confirm</button> 
+      </div>
+</div>
+{% endblock content %}

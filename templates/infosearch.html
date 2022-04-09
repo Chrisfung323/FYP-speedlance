@@ -1,0 +1,59 @@
+{% extends "home.html" %} {% block content %}
+
+<style>
+  .main {
+    padding: 70px 25vw 30px 25vw;
+  }
+
+  .media-body {
+    width: 50%;
+    border: 3px solid rgb(110, 110, 110);
+    padding: 10px;
+  }
+</style>
+
+<div class="main">
+  <h2>Freelancers search:</h2>
+  <br />
+  <div class="content-section">
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Skill:</legend>
+        <div class="form-group">
+          {{ form.Keyword.label(class="form-control-label") }} {% if
+          form.Keyword.errors %} {{ form.Keyword(class="form-control
+          form-control-lg is-invalid") }}
+          <div class="invalid-feedback">
+            {% for error in form.Keyword.errors %}
+            <span>{{ error }}</span>
+            {% endfor %} {% else %} {{ form.Keyword(class="form-check-input
+            form-check-min-height:30") }} {%endif %}
+          </div>
+        </div>
+      </fieldset>
+      <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info",id='query') }}
+      </div>
+    </form>
+    {% for information in infolist %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2">Freelancer id:{{ information.UID }}</a>
+        </div>
+        <h2><a class="article-title"> {{ information.name }}</a></h2>
+        <p class="article-content">Skills: {{ information.skills }}</p>
+        <p class="article-content">Website: <a href="{{ information.website }}">{{ information.website }}</a></p>
+        <p class="article-content">Contact email: {{ information.email }}</p>
+        <p class="article-content">Contact phone no. :{{ information.phone }}</p>
+        <p class="article-content">
+          Years of experience: {{ information.experience }}
+        </p>
+      </div>
+    </article>
+    <br />
+    {% endfor %}
+  </div>
+  {% endblock content%}
+</div>

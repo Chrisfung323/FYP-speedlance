@@ -1,0 +1,82 @@
+{% extends "home.html" %} {% block content %}
+<style>
+  .main {
+    padding: 70px 25vw 30px 25vw;
+  }
+  .media-body {
+    width: 50%;
+    border: 3px solid rgb(110, 110, 110);
+    padding: 20px;
+  }
+</style>
+
+<div class="main">
+  <article class="media content-section">
+    <div class="media-body">
+      <h2>Personal information:</h2>
+      <br />UID:{{ account.UID }} <br />User name:{{ account.username }}
+      <br />Email:{{ account.email }}
+      <br />
+      <small class="text-muted">
+        Press here to update your password:
+        <a class="ml-2" href="{{ url_for('passwordchange') }}">Update</a>
+      </small>
+    </div>
+  </article>
+
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      Press here to create or update your freelancing personal information:
+      <a class="ml-2" href="{{ url_for('infosubmission') }}">Update</a>
+    </small>
+  </div>
+  <div>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="text">
+          <p class="article-content">Contact email: {{ infolist.email }}</p>
+          <p class="article-content">Contact phone no. :{{ infolist.phone}}</p>
+        </div>
+        <div class="text">
+          <p class="article-content">Skills: {{ infolist.skills }}</p>
+          <p class="article-content">Years of experience: {{infolist.experience }}</p>
+        </div>
+        <div class="text">
+          <p class="article-content">Website: {{ infolist.website }}</p>
+        </div>
+          <p class="article-content">Short introduction
+          <br>
+          {{ infolist.selfintro }}
+          </p>
+        </div>
+      </div>
+    </article>
+    <br>
+      <h4>List of Visitor submitted info:</h4>
+      <small class="text-muted">
+        Press the remove button to remove contact:
+      </small>
+      <br />
+      <div class="row">
+        <div class="col-sm-3" style="outline-style: solid">Name</div>
+        <div class="col-sm-5" style="outline-style: solid">Email</div>
+        <div class="col-sm-2" style="outline-style: solid">Visitor.no</div>
+        <div class="col-sm-2" style="outline-style: solid"></div>
+      </div>
+      {%for vemail in vlist%}
+      <div class="row">
+        <div class="col-sm-3" style="outline-style: solid">{{vemail.name}}</div>
+        <div class="col-sm-5" style="outline-style: solid">{{vemail.email}}</div>
+        <div class="col-sm-2" style="outline-style: solid">{{vemail.VEID}}</div>
+        <div class="col-sm-2" style="outline-style: solid">
+          <form method="POST">
+            <button type="remove" value="{{vemail.VEID}}" name="VEID">
+              Remove
+            </button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock content %}

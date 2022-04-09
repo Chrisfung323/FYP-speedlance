@@ -1,0 +1,51 @@
+{% extends "home.html" %} {% block content %}
+
+<style>
+  .main {
+    padding: 70px 25vw 30px 25vw;
+  }
+
+  .media-body {
+    width: 50%;
+    border: 3px solid rgb(110, 110, 110);
+    padding: 10px;
+  }
+</style>
+
+<div class="main">
+  <h2>Freelancers now avaliable:</h2>
+  <br />
+  <a class="ml-2" href="{{ url_for('infosearch') }}">Click here to Search</a>
+  <br />
+  {% for information in infolist %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2">Freelancer id:{{ information.UID }}</a>
+      </div>
+      <h2><a class="article-title"> {{ information.name }}</a></h2>
+      <p class="article-content">Skills: {{ information.skills }}</p>
+      <p class="article-content">
+        Website:
+        <a href="{{ information.website }}">{{ information.website }}</a>
+      </p>
+      <p class="article-content">Contact email: {{ information.email }}</p>
+      <p class="article-content">Contact phone no. :{{ information.phone }}</p>
+      <p class="article-content">
+        Years of experience: {{ information.experience }}
+      </p>
+      <form method="POST">
+        <div style="border: solid 1px black;width: fit-content;background-color: lightgrey;padding: 3px;">
+        <a
+          type="button"
+          name="button"
+          href={{ url_for('infodisplay',UID = information.UID) }}
+        >
+          Detail<a></div>
+      </form>
+    </div>
+  </article>
+  <br />
+  {% endfor %}
+</div>
+{% endblock content%}

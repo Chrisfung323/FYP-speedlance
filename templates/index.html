@@ -1,0 +1,109 @@
+{% extends "home.html" %} {% block content %}
+
+<style>
+  .banner {
+    background: url("/static/banner.jpg") no-repeat;
+    width: auto;
+    padding: 0px;
+    height: 500px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bannerimg {
+    height: 100%;
+    justify-content: center;
+  }
+
+  .img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .main {
+    text-align: center;
+    padding: 20px 0 0 30px;
+  }
+
+  .userdisplayer {
+    text-align: left;
+    padding: 20px 100px 0px 100px;
+  }
+</style>
+<div class="banner"></div>
+{% if loginstate == true%}
+<div class="userdisplayer">
+  <h3>Welcome,{{userdisplay}}</h3>
+</div>
+{% endif %}
+<div class="main">
+  <h1>Welcome to Speedlance</h1>
+  <div>
+    Welcome to Speedlance, Here we provide a wide varity of freelancer for hire!
+    Feel free to browse the the web to look for talents needed!
+  </div>
+</div>
+<div class="row">
+  <div
+    class="col-sm-6"
+    style="
+      background-color: rgb(214, 214, 214);
+      padding: 5vw;
+      margin: auto;
+      align-content: center;
+      height: 500px;
+      font-size: 24px;
+    "
+  >
+    Here in Speed, Our aim is to affer the most efficient and the most user
+    friendly experience to our users, both freelancers and talent seekers .
+    Covering all sorts of skills that are needed. With an account you can
+    instantly take part and post your information and advertise right away!
+    <a class="ml-2" href="{{ url_for('register') }}"
+      >Click here to sign up today!</a
+    >
+  </div>
+  <div
+    class="col-sm-6"
+    style="
+      background: url('/static/Image1.jpg') no-repeat;
+      margin: auto;
+      justify-content: center;
+      background-size: cover;
+      height: 500px;
+    "
+  ></div>
+</div>
+<div class="row">
+  <div
+    class="col-sm-7"
+    style="
+      background-color: rgb(122, 122, 122);
+      padding: 5vw;
+      margin: auto;
+      align-content: center;
+      height: 500px;
+    "
+  >
+    image2 here
+  </div>
+  <div
+    class="col-sm-5"
+    style="
+      background-color: rgb(221, 221, 221);
+      padding: 100px;
+      margin: auto;
+      align-content: center;
+      height: 500px;
+      font-size: 24px;
+    "
+  >
+    If you are a new visitor and would like to know more about our site, feel
+    free to visit our about page to contact us and browse through the freelance list!
+    <a href="{{ url_for('about') }}">Click here to go to about page</a>
+  </div>
+</div>
+
+{% endblock content%}

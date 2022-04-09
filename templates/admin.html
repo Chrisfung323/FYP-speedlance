@@ -1,0 +1,36 @@
+{% extends "home.html" %} {% block content %}
+<style>
+  .main {
+    padding: 70px 400px 30px 400px;
+    text-align: center;
+  }
+  .selection {
+    padding: 10px 250px 30px 250px;
+    text-align: left;
+  }
+</style>
+
+<div class="main">
+  <h1>Admin management page</h1>
+  <p>Please choose the desired operation:</p>
+</div>
+<div class="selection">
+  <div class="row padding:">
+    <div class="col-sm-6" style="text-align: left">View all information:</div>
+    <div class="col-sm-6" style="text-align: right">
+      <form action="/infoview">
+        <input type="submit" value="Go" />
+      </form>
+    </div>
+  </div>
+  <hr class="dashed" />
+  <div class="row padding:">
+    <div class="col-sm-6" style="text-align: left">View all User:</div>
+    <div class="col-sm-6" style="text-align: right">
+      <form action="/adminview">
+        <input type="submit" value="Go" />
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

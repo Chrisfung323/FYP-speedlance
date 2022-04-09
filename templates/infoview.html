@@ -1,0 +1,29 @@
+{% extends "home.html" %} {% block content %}
+<style>
+  .main {
+    padding: 70px 200px 30px 200px;
+  }
+</style>
+<div class="main">
+  <h4>List of User submitted info:</h4>
+  <br />
+  <div class="row">
+    <div class="col-sm-2" style="outline-style: solid">Name</div>
+    <div class="col-sm-3" style="outline-style: solid">Location</div>
+    <div class="col-sm-3" style="outline-style: solid">Email</div>
+    <div class="col-sm-2" style="outline-style: solid">Phone</div>
+    <div class="col-sm-1" style="outline-style: solid">Experience</div>
+    <div class="col-sm-1" style="outline-style: solid">UID</div>
+  </div>
+  {%for information in infolist%}
+  <div class="row">
+    <div class="col-sm-2" style="outline-style: solid">{{information.name}}</div>
+    <div class="col-sm-3" style="outline-style: solid">{{information.location}}</div>
+    <div class="col-sm-3" style="outline-style: solid">{{information.email}}</div>
+    <div class="col-sm-2" style="outline-style: solid">{{information.phone}}</div>
+    <div class="col-sm-1" style="outline-style: solid">{{information.experience}}</div>
+    <div class="col-sm-1" style="outline-style: solid">{{information.UID}}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}
