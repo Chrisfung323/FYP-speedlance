@@ -14,6 +14,7 @@
   .bannerimg {
     height: 100%;
     justify-content: center;
+    filter: blur(10px);
   }
 
   .img {
@@ -32,15 +33,16 @@
     padding: 20px 100px 0px 100px;
   }
 </style>
-<div class="banner"></div>
+<div class="banner">
+</div>
 {% if loginstate == true%}
 <div class="userdisplayer">
   <h3>Welcome,{{userdisplay}}</h3>
 </div>
 {% endif %}
-<div class="main">
-  <h1>Welcome to Speedlance</h1>
-  <div>
+<div class="main" style="padding: 12vh 5vw 12vh 5vw">
+  <h1 style="font-size: min(5vw, 70px)">Welcome to Speedlance</h1>
+  <div style="font-size: min(3vw, 35px)">
     Welcome to Speedlance, Here we provide a wide varity of freelancer for hire!
     Feel free to browse the the web to look for talents needed!
   </div>
@@ -79,15 +81,8 @@
 <div class="row">
   <div
     class="col-sm-7"
-    style="
-      background-color: rgb(122, 122, 122);
-      padding: 5vw;
-      margin: auto;
-      align-content: center;
-      height: 500px;
-    "
   >
-    image2 here
+  
   </div>
   <div
     class="col-sm-5"
@@ -101,7 +96,8 @@
     "
   >
     If you are a new visitor and would like to know more about our site, feel
-    free to visit our about page to contact us and browse through the freelance list!
+    free to visit our about page to contact us and browse through the freelance
+    list!
     <a href="{{ url_for('about') }}">Click here to go to about page</a>
   </div>
 </div>

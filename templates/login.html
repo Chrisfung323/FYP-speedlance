@@ -1,5 +1,10 @@
 {% extends "home.html" %} {% block content %}
 <style>
+  .background {
+    background-image: url("static/background.jpg");
+    position: center;
+    background-size: 100%;
+  }
   .main {
     background-color: lightgrey;
     position: absolute;
@@ -8,6 +13,7 @@
     height: 100%
   }
 </style>
+<body class="background">
 <div class="main">
   <div class="content-section">
     <form method="POST" action="">
@@ -55,4 +61,5 @@
     </small>
   </div>
 </div>
+</body>
 {% endblock content %}
