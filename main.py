@@ -365,6 +365,9 @@ def adminview():
                 sql = "DELETE FROM users WHERE UID=(%s)"
                 cursor.execute(sql,(id))
                 db.commit()
+                sql = "DELETE FROM information WHERE UID=(%s)"
+                cursor.execute(sql,(id))
+                db.commit()
                 flash('User removed successfully', 'success')
                 return render_template('adminview.html',userlist=userlist,loginstate=loginstate)
             except:
