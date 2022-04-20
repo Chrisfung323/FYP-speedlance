@@ -124,6 +124,15 @@ def register():
         username = request.form["username"]
         email = request.form["email"]
         password = request.form["password"]
+        sql = "SELECT email FROM users WHERE email=(%s)"
+        cursor.execute(sql,(email))
+        result = cursor.fetchone()
+        
+        if email == result['email']:
+            flash('Email has already been registered','danger')
+            return render_template('register.html/', title='Register',form=form ,loginstate=loginstate)
+
+
         sql = "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)"
         cursor.execute(sql,(username, email, password))
         db.commit()
