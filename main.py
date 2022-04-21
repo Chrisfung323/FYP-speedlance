@@ -128,14 +128,15 @@ def register():
         cursor.execute(sql,(email))
         result = cursor.fetchone()
         
-        if email == result['email']:
-            flash('Email has already been registered','danger')
-            return render_template('register.html/', title='Register',form=form ,loginstate=loginstate)
+        try:
+            if email == result['email']:
+                flash('Email has already been registered','danger')
+                return render_template('register.html/', title='Register',form=form ,loginstate=loginstate)
 
-
-        sql = "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)"
-        cursor.execute(sql,(username, email, password))
-        db.commit()
+        except:
+            sql = "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)"
+            cursor.execute(sql,(username, email, password))
+            db.commit()
 
         flash(f'Account created for {form.username.data}!,Please go to account to update information', 'success')
         return redirect(url_for('index'))

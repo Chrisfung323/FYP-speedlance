@@ -29,7 +29,7 @@ class InformationForm(FlaskForm):
     website = StringField('Website/portfolio link')
     email = StringField('Email for contact',validators=[DataRequired(), Email()])
     phone = StringField('Phone number',validators=[DataRequired(), Length(min=8, max=8)])
-    experience = StringField('Years of experience',validators=[DataRequired()])
+    experience = StringField('Years of experience',validators=[DataRequired(), Length(min=1, max=2)])
     selfintro = StringField('Simple self introduction',validators=[Length(max=250)])
     submit = SubmitField('submit')
 
